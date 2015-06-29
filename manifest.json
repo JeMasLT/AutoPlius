@@ -9,12 +9,12 @@
         "default_icon": "img/icon48.png"
     },
     "permissions": [
-        "tabs"
+        "tabs", "storage"
     ],
     "content_scripts": [
-    {
-      "matches": ["http://auto.plius.lt/*", "https://auto.plius.lt/*"],
-      "js": ["background.js"]
-    }
+        {
+            "matches": [ "http://auto.plius.lt/*", "https://auto.plius.lt/*" ],
+            "js": [ "autoplius.js" ]
+        }
   ]
 }
