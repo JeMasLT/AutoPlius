@@ -1,6 +1,5 @@
 var x = document.getElementsByClassName("title-list");
 var i;
-localStorage["numeris"] = "";
 for (i = 0; i < x.length; i++) {    
     var im = document.createElement("img");
     im.src = "http://icons.iconarchive.com/icons/led24.de/led/16/clipboard-text-icon.png";
@@ -32,23 +31,27 @@ for (i = 0; i < x.length; i++) {
 
         }
         /////////////////////////////////////
-            
-        
-        //console.log(ind);
+
         var phoneScript = tr[ind].getElementsByTagName("td")[0].getElementsByTagName("strong")[0].childNodes[0].text;
 
         function addNumber(a){
             numeris += a;
         }
-        //console.log(phoneScript);
+  
         phoneScript = phoneScript.toString().replace(/document.write/gi, "addNumber");
-        //console.log(phoneScript);
+        
         eval(phoneScript);
-        //console.log(numeris);
-        if (localStorage["numeris"])
-            localStorage["numeris"] += "\n";
-        localStorage["numeris"] +=  numeris;
-        console.log(localStorage["numeris"]);
+        
+        //save to storage
+        //save
+        chrome.extension.sendRequest({ cmd: "save", data: numeris });
+        
+        //load
+        chrome.extension.sendRequest({cmd: "load"}, function(response) {
+            console.log(response);
+        });
+
+        
     }
     x[i].appendChild(im);
 }
