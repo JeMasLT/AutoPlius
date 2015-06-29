@@ -47,9 +47,9 @@ for (i = 0; i < x.length; i++) {
         chrome.extension.sendRequest({ cmd: "save", data: numeris });
         
         //load
-        chrome.extension.sendRequest({cmd: "load"}, function(response) {
-            console.log(response);
-        });
+        //.extension.sendRequest({cmd: "load"}, function(response) {
+        //    console.log(response);
+        //});
 
         
     }
