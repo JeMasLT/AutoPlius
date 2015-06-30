@@ -2,7 +2,8 @@ var x = document.getElementsByClassName("title-list");
 var i;
 for (i = 0; i < x.length; i++) {    
     var im = document.createElement("img");
-    im.src = "http://icons.iconarchive.com/icons/led24.de/led/16/clipboard-text-icon.png";
+	console.log(chrome.extension.getURL("img/button.png"));
+    im.src = chrome.extension.getURL("img/button.png");//"http://icons.iconarchive.com/icons/led24.de/led/16/clipboard-text-icon.png";
 
     //var t = document.createElement("a");
     im.setAttribute("href", x[i].childNodes[0].getAttribute("href"));
